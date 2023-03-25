@@ -1,7 +1,8 @@
-const express = require('express')
+const app = require('./app');
 
-const app = express();
 
-app.listen(8800,()=>{
-    console.log("connected!")
-})
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => {
+	console.log(`Servidor - http://localhost:${port}/api`);
+});
