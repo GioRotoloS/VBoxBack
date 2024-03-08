@@ -23,11 +23,15 @@ module.exports.login = async (req, res) => {
             userId: user._id,
           }, "jwtkey");
 
-          const { pass, ...other } = user;
+          const data = {
+            email: req.body.email,
+            name: user.name,
+            token
+          }
           
           res.cookie("access_token", token, {
             httpOnly: true
-          }).status(200).json(other);
+          }).status(200).json(data);
         } else {
           res.status(404).json("Contraseña incorrecta");
         }

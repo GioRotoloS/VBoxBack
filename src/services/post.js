@@ -13,9 +13,9 @@ module.exports.getPosts = async (req,res) => {
 module.exports.getPost = async (req,res) => {
     try {
         const comp = await Company.findOne({cid:req.params.id});
-        res.status(200).json(comp);
+        return res.status(200).json(comp);
     } catch (error) {
-        res.status(400).json({message: error.message});
+        return res.status(400).json({message: error.message});
     }
 }
 
